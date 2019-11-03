@@ -42,7 +42,7 @@ LABEL maintainer="John Belisle" \
 COPY --from=builder go/src/github.com/prometheus/alertmanager/alertmanager /bin/alertmanager
 COPY --from=builder go/src/github.com/prometheus/alertmanager/amtool /bin/amtool
 COPY --from=builder go/src/github.com/prometheus/alertmanager/examples/ha/alertmanager.yml /etc/alertmanager/alertmanager.yml
-COPY conf /etc/alertmanager/
+COPY conf/docker-entrypoint.sh /etc/alertmanager/docker-entrypoint.sh
 
 RUN mkdir -p /alertmanager && \
     chown -R nobody:nogroup etc/alertmanager /alertmanager
