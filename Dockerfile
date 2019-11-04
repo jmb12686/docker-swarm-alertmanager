@@ -52,9 +52,12 @@ EXPOSE      9093
 VOLUME      [ "/alertmanager" ]
 
 
-RUN ["chmod", "+x", "/etc/alertmanager/docker-entrypoint.sh"]
-RUN ["dos2unix", "/etc/alertmanager/docker-entrypoint.sh"]
+## Typically developing in Windows environment, running dos2unix as precaution to avoid corrupt / unreadable files
+RUN chmod +x /etc/alertmanager/docker-entrypoint.sh && \
+    dos2unix /etc/alertmanager/docker-entrypoint.sh && \
+    dos2unix /etc/alertmanager/alertmanager.yml
 WORKDIR     /alertmanager
+
 ENTRYPOINT  [ "/etc/alertmanager/docker-entrypoint.sh"]
 CMD         [ "/bin/alertmanager", "--config.file=/etc/alertmanager/alertmanager.yml", \
             "--storage.path=/alertmanager" ]
