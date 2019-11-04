@@ -14,7 +14,7 @@ jobs:
         name: Prepare
         id: prepare
         run: |
-          echo ::set-output name=build_tag::test
+          echo ::set-output name=build_tag::test-container
           echo ::set-output name=container_name::alertmanager-swarm
           echo ::set-output name=running_timeout::60
           echo ::set-output name=running_log_check::Listening address
