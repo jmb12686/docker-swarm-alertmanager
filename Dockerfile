@@ -56,10 +56,6 @@ VOLUME      [ "/alertmanager" ]
 RUN chmod +x /etc/alertmanager/docker-entrypoint.sh && \
     dos2unix /etc/alertmanager/docker-entrypoint.sh && \
     dos2unix /etc/alertmanager/alertmanager.yml
-## Silly statements below - debugging github action on container run #####
-RUN ls -rlth /etc/alertmanager/alertmanager.yml
-RUN cat /etc/alertmanager/alertmanager.yml
-##########################################################################
 WORKDIR     /alertmanager
 
 ENTRYPOINT  [ "/etc/alertmanager/docker-entrypoint.sh"]
